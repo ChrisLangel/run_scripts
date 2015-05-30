@@ -1,0 +1,26 @@
+#!/bin/bash 
+
+
+dirRE=$(find . -name 'RE*' -type d)
+for dirR in $dirRE ; do
+        cd $dirR
+        read RE REnum<<<$(IFS="RE"; echo $dirR) 
+        dirAlph=$(find . -name 'AoA*' -type d)
+        for dirA in $dirAlph ; do
+		cd $dirA
+        	read AoA Anum<<<$(IFS="_"; echo $dirA) 
+		cp ../../Base/naca.1.inp .
+		sed "s/ALPHA = 0.0/AlPHA = $Anum/g" < naca.1.inp > temp
+		sed "s/REY = 0.0/REY = $REnum/g" < temp > temp2
+                mv temp2 naca.1.inp
+                rm -f temp                   
+                cd ..
+	done 
+	cd ..
+done
+
+
+
+
+
+

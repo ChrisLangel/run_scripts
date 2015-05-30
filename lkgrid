@@ -1,0 +1,22 @@
+#!/bin/bash 
+
+
+
+dirRE=$(find . -name 'RE*' -type d)
+for dirR in $dirRE ; do
+        cd $dirR
+        dirAlph=$(find . -name 'AoA*' -type d)
+        for dirA in $dirAlph ; do
+		cd $dirA
+		rm -f RUNNING
+                ln -s ../../Base/naca64grid.in grid.in 
+                cd ..
+	done 
+	cd ..
+done
+
+
+
+
+
+

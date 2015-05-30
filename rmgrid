@@ -1,0 +1,20 @@
+#!/bin/bash 
+
+
+dirRE=$(find . -name 'RE*' -type d)
+for dirR in $dirRE ; do
+        cd $dirR
+        dirAlph=$(find . -name 'AoA*' -type d)
+        for dirA in $dirAlph ; do
+		cd $dirA
+		rm -f grid.in q.restart naca.resid RUNNING x.save rpmin.out turb.out naca.fomoco naca.rpmin naca.turb 
+                cd ..
+	done 
+	cd ..
+done
+
+
+
+
+
+
